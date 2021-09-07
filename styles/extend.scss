@@ -1,0 +1,116 @@
+.backdrop {
+    backdrop-filter: blur(12px);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Karla', 'Arial', sans-serif;
+}
+
+html,
+body,
+#__next {
+    margin: 0;
+    padding: 0;
+    font-family: 'Karla', 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+.bg-dark {
+    background-color: rgb(31, 31, 31);
+}
+
+.gradient-more {
+    background: linear-gradient(0deg, rgba(31, 31, 31, 1) 20%, rgba(31, 31, 31, 0) 100%);
+}
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("/fonts/Quicksand.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Encode";
+    src: url("/fonts/Encode.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Karla";
+    src: url("/fonts/Karla.ttf") format("truetype");
+    font-display: swap;
+}
+
+.appear {
+    animation-iteration-count: 1;
+    animation-duration: 200ms;
+    animation-timing-function: ease-in-out;
+    animation-name: appering;
+}
+
+@keyframes appearing {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.load {
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-name: loading-animation;
+}
+
+@keyframes loading-animation {
+    0% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+    50% {
+        background-color: rgba(255, 255, 255, 0.02);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+.main-bg {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1045%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(0%2c 0%2c 0%2c 1)'%3e%3c/rect%3e%3cpath d='M690.16 639.75C788.11 617.04 734.47 369.23 975.27 356.1 1216.08 342.97 1397.28 195.27 1545.5 193.7' stroke='rgba(131%2c 131%2c 131%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M228.14 638.82C411.13 634.12 544.79 380.79 909.92 371.85 1275.06 362.91 1409.55 118.5 1591.71 114.25' stroke='rgba(131%2c 131%2c 131%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M641.02 640.86C763.98 609.68 721.57 276.26 992.16 274.58 1262.74 272.9 1516.42 391.77 1694.43 392.18' stroke='rgba(131%2c 131%2c 131%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M734.81 573.44C857.22 566.36 918.93 359.45 1167.47 342.45 1416.02 325.45 1473.93 89.32 1600.14 79.25' stroke='rgba(131%2c 131%2c 131%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3cpath d='M446.96 616.06C564.05 601.13 513.8 345.98 825.62 334 1137.45 322.02 1384.72 101.49 1582.95 98.8' stroke='rgba(131%2c 131%2c 131%2c 0.58)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1045'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    background-position: bottom center;
+    background-size: cover;
+}
+
+.shadow-big {
+    box-shadow: 5px 5px 51px 7px rgba(0, 0, 0, 1);
+}
+
+.bg-gradient-black {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(31, 31, 31, 0) 72%);
+}
+
+.bg-bg {
+    background-color: black;
+}
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: white;
+    background: #6100fd7e;
+}
+
+ ::selection {
+    color: white;
+    background: #6100fd7c;
+}
+
+.tooltip {
+    @apply invisible absolute;
+  }
+  
+  .has-tooltip:hover .tooltip {
+    @apply visible z-50;
+  }
