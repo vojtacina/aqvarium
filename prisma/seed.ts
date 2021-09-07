@@ -4,10 +4,8 @@ import prisma from "../lib/clients/prisma";
 async function main() {
   const listOfNewUsers = [...new Array(5)].map(() => {
     return {
-      email: faker.internet.email(),
-      name: faker.name.findName(),
-      image: faker.image.image(),
-    
+      username: faker.internet.userName(),
+      password: faker.name.firstName(),
       }
     ;
   });
