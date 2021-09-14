@@ -19,7 +19,7 @@ export default function Layout({ children, title}:{children: any, title?: string
                     content="Najdi si nové přátele z tvého města i celé ČR. Vše je zdarma!"
                 />
             </Head>
-            <main className="bg-gray-100">
+            <main className="bg-gray-100 min-h-screen">
                 {children}
             </main>
         </div>

@@ -33,7 +33,7 @@ export default function Login() {
       setClicked(false)
     }
     if(response.status == 200) {
-      router.push("/")
+      router.push("/dashboard")
     }
   }
 
