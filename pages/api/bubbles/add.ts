@@ -1,10 +1,10 @@
 import prisma from "lib/clients/prisma"
 import { getSession } from "next-auth/client";
 
-const user = async function (req, res) {
+export default async function (req, res) {
     const session = await getSession({ req });
-    const {title, image, city, userId} = req
-    
+    const { title, image, city, userId } = req.body
+
     if (session) {
         await prisma.bubble.create({
             data: {
@@ -14,10 +14,12 @@ const user = async function (req, res) {
                 city: city,
             },
         })
+        res.statusCode = 200;
+        res.end()
     }
     else {
         res.statusCode = 403;
         res.end("Not signed in");
     }
-    
+
 }
