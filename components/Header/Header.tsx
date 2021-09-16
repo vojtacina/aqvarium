@@ -28,8 +28,8 @@ export default function Header() {
 
 
     return (
-        <div className={"w-full flex justify-between p-24px sticky top-0  z-50 transition duration-1000 " + (!visible && "backdrop")}>
-            <Link href="/">
+        <div className={"lg:hidden w-full flex justify-start p-24px sticky top-0  z-50 transition duration-1000 " + (!visible && "backdrop")}>
+            <Link href="/dashboard">
                 <a>
                     <div className="w-40px  h-40px relative appear">
                         <Image src="/img/logo.svg" layout="fill" objectFit="contain" />
@@ -37,7 +37,7 @@ export default function Header() {
                     </div>
                 </a>
             </Link>
-            <div className="w-full flex justify-end items-center text-14 md:text-16">
+            <div className="ml-28px w-full flex justify-start items-center text-14 md:text-16">
                 {session &&
                    <UserButton />
                 }
