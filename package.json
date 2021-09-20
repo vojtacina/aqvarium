@@ -21,6 +21,7 @@
         "next": "^11.0.1",
         "next-auth": "^3.29",
         "next-iron-session": "^4.1.12",
+        "next-s3-upload": "^0.1.7",
         "react": "^17.0.2",
         "react-animated-css": "^1.2.1",
         "react-dom": "^17.0.2",

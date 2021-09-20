@@ -18,3 +18,15 @@ export function useBubbleView () {
       isError: error
     }
   }
+
+  export function useUserDetails() {
+    const { data, error } = useSWR('/api/users/get-details', fetcher)
+  
+
+    return {
+      id: data?.id,
+      username: data?.username,
+      isLoading: !error && !data,
+      isError: error
+    }
+  }

@@ -6,15 +6,17 @@ import InflectionGenerator from "components/InflectionGenerator";
 import Layout from "components/Layout";
 import Loading from "components/Loading";
 import SelectCity from "components/SelectCity";
-import { useBubbleView } from "lib/Fetchers";
+import { useBubbleView, useUserDetails } from "lib/Fetchers";
 import { session, useSession } from "next-auth/client";
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+import { useS3Upload } from "next-s3-upload";
 
 export default function Dashboard() {
 
     const { bubbles, isLoading, isError } = useBubbleView()
+    const { id, username } = useUserDetails()
     const [session, loading] = useSession()
     const [clicked, setClicked] = useState(false)
     const router = useRouter()
@@ -22,6 +24,10 @@ export default function Dashboard() {
     const [title, setTitle] = useState("" as any)
     const [city, setCity] = useState("" as any)
     const [file, setFile] = useState(null as any)
+
+    let { FileInput, openFileDialog, uploadToS3 } = useS3Upload();
+
+    console.log("id:", id)
 
     useEffect(() => {
         console.log(title, city, file)
@@ -34,31 +40,41 @@ export default function Dashboard() {
     }, [loading])
 
     async function send() {
-        if (!title || title == "") {
-            alert("Je potřeba vyplnit popis")
-            return
-        }
-        if (title.length > 100) {
-            alert("Popis je příliš dlouhý")
-            return
-        }
-        if (!file) {
-            alert("Příběh musí obsahovat obrázek")
-            return
-        }
-        if (file?.type != "image/jpeg") {
-            alert("Soubor musí být obrázek")
-            return
+        if (!clicked) {
+            if (!title || title == "") {
+                alert("Je potřeba vyplnit popis")
+                return
+            }
+            if (title.length > 100) {
+                alert("Popis je příliš dlouhý")
+                return
+            }
+            if (!file) {
+                alert("Příběh musí obsahovat obrázek")
+                return
+            }
+            if (file?.type != "image/jpeg") {
+                alert("Soubor musí být obrázek")
+                return
+            }
+
+            setClicked(true)
+
+            const { url } = await uploadToS3(file)
+
+            const response = await axios.post("/api/bubbles/add", {
+                userId: id,
+                title: title,
+                image: url,
+                city: city,
+            }).then((res) => {
+                alert("Příběh byl přidán do hlavního feedu! 😎")
+            }).finally(() => {
+                router.push("/dashboard")
+                setClicked(false)
+            })
         }
 
-        const response = await axios.post("/api/bubbles/add", {
-            userId: 3,
-            title: title,
-            image: "https://picsum.photos/200/300",
-            city: city,
-        }).finally(() => {
-            router.push("/dashboard")
-        })
     }
 
     return (
@@ -82,54 +98,62 @@ export default function Dashboard() {
                             {clicked ? "Ověřování..." : "Nahrát"}
                         </button>
                     </div>
-                    <div className="w-full rounded-lg bg-white shadow-lg p-24px">
+                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white shadow-lg overflow-hidden mb-24px">
 
 
-                        <div className="my-8px">
-                            <label htmlFor="first-name" className="block text-sm font-medium">
-                                Text příběhu
-                            </label>
-                            <input
-                                type="text"
-                                name="first-name"
-                                id="first-name"
-                                autoComplete="given-name"
-                                onChange={(e) => setTitle(e.target.value)}
-                                className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            />
+                        <div className="p-24px order-1 md:order-2 md:col-span-2">
+
+                            <div className="my-8px">
+                                <label htmlFor="first-name" className="block text-sm font-medium">
+                                    Obrázek
+                                </label>
+                                <input
+                                    type="file"
+                                    name="first-name"
+                                    id="first-name"
+                                    autoComplete="given-name"
+                                    required
+                                    onChange={(e) => setFile(e.target.files[0])}
+                                    className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div className="my-8px">
+                                <label htmlFor="first-name" className="block text-sm font-medium">
+                                    Text příběhu
+                                </label>
+                                <input
+                                    type="text"
+                                    name="first-name"
+                                    id="first-name"
+                                    autoComplete="given-name"
+                                    required
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                />
+                            </div>
+                            <div className="my-8px">
+                                <label htmlFor="first-name" className="block text-sm font-medium">
+                                    Město
+                                </label>
+                                <input
+                                    type="text"
+                                    name="first-name"
+                                    id="first-name"
+                                    autoComplete="given-name"
+                                    onChange={(e) => setCity(e.target.value)}
+                                    className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                />
+
+                            </div>
                         </div>
-                        <div className="my-8px">
-                            <label htmlFor="first-name" className="block text-sm font-medium">
-                                Město
-                            </label>
-                            <input
-                                type="text"
-                                name="first-name"
-                                id="first-name"
-                                autoComplete="given-name"
-                                onChange={(e) => setCity(e.target.value)}
-                                className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            />
-
-                        </div>
-                        <div className="my-8px">
-                            <label htmlFor="first-name" className="block text-sm font-medium">
-                                Obrázek
-                            </label>
-                            <input
-                                type="file"
-                                name="first-name"
-                                id="first-name"
-                                autoComplete="given-name"
-                                onChange={(e) => setFile(e.target.files[0])}
-                                className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            />
-
-                        </div>
-                        <div>
+                        <div className="order-2 md:order-1 relative">
                             {file &&
-                                <img src={URL.createObjectURL(file)} width={100} height={300} />
+                                <img src={URL.createObjectURL(file)} width={"100%"} height={"100%"} />
                             }
+                            <div className="absolute p-24px text-white left-0 right-0 bottom-0 text-24 block">
+                                <p>{title}</p>
+                                <p className="text-16 opacity-80">{city}</p>
+                            </div>
                         </div>
 
                     </div>
