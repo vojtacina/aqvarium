@@ -84,13 +84,13 @@ export default function Dashboard() {
 
 
                 <div className="w-full appear px-24px">
-                    <div className="w-full flex justify-between py-16px items-center">
+                    <div className="w-full flex justify-between py-24px items-center">
                         <div>
                             <h1 className="font-medium text-18 md:text-24">Přidat příběh</h1>
                         </div>
                         <button
                             onClick={() => send()}
-                            className={"group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " + (clicked ? " bg-gray-200 text-gray-800 " : " bg-indigo-600 hover:bg-indigo-700")}
+                            className={"group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " + (clicked ? " bg-gray-200 text-gray-800 " : " bg-indigo-600 hover:bg-indigo-700")}
                         >
                             <span className="absolute left-0 inset-y-0 flex items-center pl-3">
 
@@ -113,7 +113,9 @@ export default function Dashboard() {
                                     id="first-name"
                                     autoComplete="given-name"
                                     required
-                                    onChange={(e) => setFile(e.target.files[0])}
+                                    onChange={(e) => 
+                                            setFile(e.target.files[0])
+}
                                     className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 />
                             </div>
@@ -146,9 +148,11 @@ export default function Dashboard() {
 
                             </div>
                         </div>
-                        <div className="order-2 md:order-1 relative">
+                        <div className="order-2 md:order-1 relative h-full w-full">
                             {file &&
-                                <img src={URL.createObjectURL(file)} width={"100%"} height={"100%"} />
+                            <div className="w-full h-full">
+                                <img src={URL.createObjectURL(file)} width={"100%"} height="100%" className="object-cover min-h-full" />
+                                </div>
                             }
                             <div className="absolute p-24px text-white left-0 right-0 bottom-0 text-24 block">
                                 <p>{title}</p>

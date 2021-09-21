@@ -52,27 +52,28 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-x-20px">
                     {session?.user &&
-                    <>
-                    <div className="ml-20px">Nástěnka</div>
-
-                    <div>{session?.user?.name}</div>
-                    </>
+                      <>
+                        <Link href="/dashboard">
+                          <div className="ml-20px">Nástěnka</div>
+                        </Link>
+                        <div>{session?.user?.name}</div>
+                      </>
                     }
-                    
+
                   </div>
                   <div className="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
-                    {session?.user ? 
-                    <div onClick={() => signOut()} className="cursor-pointer font-medium text-indigo-600 hover:text-indigo-500">
-                      Odhlásit se
-                    </div>
-                  :
-                  <Link href="/login" >
-                      <div className="cursor-pointer font-medium text-indigo-600 hover:text-indigo-500">
-                        Přihlásit se
+                    {session?.user ?
+                      <div onClick={() => signOut()} className="cursor-pointer font-medium text-indigo-600 hover:text-indigo-500">
+                        Odhlásit se
                       </div>
-                    </Link>
-                  }
-                    
+                      :
+                      <Link href="/login" >
+                        <div className="cursor-pointer font-medium text-indigo-600 hover:text-indigo-500">
+                          Přihlásit se
+                        </div>
+                      </Link>
+                    }
+
                   </div>
                 </nav>
               </div>
@@ -88,12 +89,14 @@ export default function Home() {
                   </p>
                   <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                     <div className="rounded-md shadow">
+                      <Link href="/dashboard">
                       <a
-                        href="#"
+
                         className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                       >
                         Prozkoumat
                       </a>
+                      </Link>
                     </div>
                     <div className="mt-3 sm:mt-0 sm:ml-3">
                       <a
