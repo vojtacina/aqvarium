@@ -15,7 +15,7 @@ export default function SelectCity() {
         <Menu as="div" className="relative inline-block text-left z-10">
             <div>
                 <Menu.Button className="inline-flex items-center justify-center w-full rounded-lg px-4 py-2  text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                    <span>🇨🇿 Celá ČR</span>
+                    <span className="whitespace-nowrap">🇨🇿 Celá ČR</span>
                     <ChevronDownIcon className="-mr-1 ml-2 h-20px w-20px" aria-hidden="true" />
                 </Menu.Button>
             </div>

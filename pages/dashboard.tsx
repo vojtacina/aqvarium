@@ -1,6 +1,7 @@
 import AddBubble from "components/AddBubble";
 import AppContainer from "components/AppContainer";
 import Bubble from "components/Bubble";
+import BubblePlaceholder from "components/BubblePlaceholder";
 import Header from "components/Header/Header";
 import InflectionGenerator from "components/InflectionGenerator";
 import Layout from "components/Layout";
@@ -30,22 +31,28 @@ export default function Dashboard() {
                 <Header />
 
 
-                <div className="w-full appear px-24px">
-                    <div className="hidden py-16px bg-white rounded-lg px-6px my-6px"><span>👋 Vítej zpět, </span>
+                <div className="w-full appear px-24px md:py-24px">
+                    <div className=" py-16px bg-white rounded-lg px-6px "><span>👋 Vítej zpět, </span>
                         <span> {session?.user?.name ? InflectionGenerator(session.user.name, 2) : <span className="w-50px h-21px load">neznámý</span>}! </span></div>
                     <div className="w-full flex justify-between py-16px items-center">
                         <div>
-                            <h1 className="font-medium text-18 md:text-24">Nejnovější příběhy</h1>
+                            <h1 className="font-medium text-18 md:text-24 whitespace-nowrap">Nejnovější příběhy</h1>
                         </div>
-                        <SelectCity />
+
                     </div>
-                    <div className="grid sm:grid-cols-3 gap-x-12px gap-y-12px grid-cols-2 md:grid-cols-4 xl:grid-cols-5">
+                    <div className="grid sm:grid-cols-3 gap-x-12px gap-y-12px grid-cols-2 md:grid-cols-4 xl:grid-cols-5 pb-30px">
                         <AddBubble />
                         {bubbles?.map((bubble, i) =>
                             <Bubble data={bubble} i={i} />
                         )}
                         {isLoading &&
-                            <Loading />
+                        <>
+                        <BubblePlaceholder />
+                        <BubblePlaceholder />
+                        <BubblePlaceholder />
+                        <BubblePlaceholder />
+                        </>
+                        
                         }
                     </div>
                 </div>

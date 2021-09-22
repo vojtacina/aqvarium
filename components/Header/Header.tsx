@@ -16,7 +16,7 @@ export default function Header() {
     const handleScroll = () => {
         const currentScrollPos = window.pageYOffset;
 
-        setVisible((prevScrollPos > currentScrollPos && prevScrollPos - currentScrollPos > 70) || currentScrollPos < 10);
+        setVisible((currentScrollPos < 20));
 
         setPrevScrollPos(currentScrollPos);
     };
@@ -38,8 +38,10 @@ export default function Header() {
 
     return (
         <motion.div 
-        animate={{height: visible ? 80 : 60, backgroundColor: visible ? "transparent" : "rgba(249, 250, 251, 0.5)", boxShadow: visible ? "none" : "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"}}
-        className={"lg:hidden w-full flex justify-start items-center px-24px h-80px sticky top-0  z-50 transition duration-1000 " + (!visible && "backdrop")}>
+        style={{boxShadow: visible ? "none" : "0 10px 15px -3px rgba(0, 0, 0, 0.025), 0 4px 6px -2px rgba(0, 0, 0, 0.01)"}}
+        animate={{height: visible ? 80 : 0}}
+        transition={{ ease: "easeOut", duration: 0.2}}
+        className={"lg:hidden w-full flex justify-start items-center overflow-hidden px-24px h-80px sticky top-0 bg-gray-100  z-50 transition duration-1000 " + (!visible && " bg-opacity-90 ")}>
             <Link href="/dashboard">
                 <a>
                     <div className="w-40px  h-40px relative appear">

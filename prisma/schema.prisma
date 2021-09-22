@@ -39,12 +39,13 @@ model Bubble {
 }
 
 model Thread {
-  id             Int    @id @default(autoincrement())
+  id             Int      @id @default(autoincrement())
   bubbleId       Int
   messageUserId  Int
   messageContent String
-  Bubble         Bubble @relation(fields: [bubbleId], references: [id])
-  messageUser    User   @relation(fields: [messageUserId], references: [id])
+  date           DateTime
+  bubble         Bubble   @relation(fields: [bubbleId], references: [id])
+  messageUser    User     @relation(fields: [messageUserId], references: [id])
 }
 
 model Message {

@@ -8,6 +8,9 @@ export default async function (req, res) {
         const data = await prisma.bubble.findMany({
             orderBy: { 
                 updatedAt: "desc"
+            },
+            include: {
+                user: true
             }
         })
         res.json(data)

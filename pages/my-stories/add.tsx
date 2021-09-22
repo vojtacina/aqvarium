@@ -16,7 +16,7 @@ import { useS3Upload } from "next-s3-upload";
 export default function Dashboard() {
 
     const { bubbles, isLoading, isError } = useBubbleView()
-    const { id, username } = useUserDetails()
+    const { userId, username } = useUserDetails()
     const [session, loading] = useSession()
     const [clicked, setClicked] = useState(false)
     const router = useRouter()
@@ -27,7 +27,7 @@ export default function Dashboard() {
 
     let { FileInput, openFileDialog, uploadToS3 } = useS3Upload();
 
-    console.log("id:", id)
+    console.log("id:", userId)
 
     useEffect(() => {
         console.log(title, city, file)
@@ -63,7 +63,7 @@ export default function Dashboard() {
             const { url } = await uploadToS3(file)
 
             const response = await axios.post("/api/bubbles/add", {
-                userId: id,
+                userId: userId,
                 title: title,
                 image: url,
                 city: city,
