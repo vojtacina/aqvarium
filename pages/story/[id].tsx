@@ -63,8 +63,6 @@ export default function Story() {
         <Layout title={story ? story?.title : ("Příběh " + id)}>
             <AppContainer>
                 <Header />
-
-
                 <div className="w-full appear md:px-24px md:py-24px">
 
                     <div className="grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden">
