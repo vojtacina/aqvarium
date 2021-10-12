@@ -1,4 +1,5 @@
 module.exports = {
+    darkMode: 'media', 
 
     purge: [
         "./components/**/*.tsx",
@@ -62,13 +63,6 @@ module.exports = {
                 white: "#FFFFFF",
                 dark: '#383838',
                 purple: '#6000FD',
-                gray: {
-                    400: '#B5B5B5',
-                    500: '#838383',
-                    600: '#686868',
-                    700: '#525252',
-                    800: '#383838',
-                },
                 transparent: 'rgba(0, 0, 0, 0)'
             },
             rotate: {

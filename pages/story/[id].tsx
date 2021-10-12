@@ -12,6 +12,8 @@ import axios from "axios"
 import Message from "components/Message"
 import AutosizeInput from 'react-input-autosize';
 import { useKeyPress } from 'lib/useKeyPress'
+import filterText from "lib/TextFilter"
+
 
 export default function Story() {
 
@@ -29,14 +31,19 @@ export default function Story() {
     const input = useRef(null)
 
     useEffect(() => {
-        if(pressed && (document.activeElement === input.current)) {
+        if (pressed && (document.activeElement === input.current)) {
             addComment()
         }
     }, [pressed])
 
     async function addComment() {
         setClicked(true)
-        setComment("")
+
+        if (!filterText(comment)) {
+            setComment("")
+        }
+
+
 
         if (!comment || comment == "") {
             setClicked(false)
@@ -51,10 +58,12 @@ export default function Story() {
             message: comment,
             date: new Date()
         }).then((res) => {
-
+            setComment("")
+        }).catch((err) => {
+            alert(err.response.data.message)
         }).finally(() => {
             setClicked(false)
-            setComment("")
+
         })
     }
 
@@ -66,10 +75,10 @@ export default function Story() {
                 <div className="w-full appear md:px-24px md:py-24px">
 
                     <div className="grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden">
-                        <motion.div 
-                        animate={{opacity: story ? 1 : 0, y: story? 0: 100}}
-                        initial={{opacity: 0, y: 100}}
-                        className=" w-full overflow-hidden relative min-h-400px h-90vh">
+                        <motion.div
+                            animate={{ opacity: story ? 1 : 0, y: story ? 0 : 100, borderRadius: 0 }}
+                            initial={{ opacity: 0, y: 100, borderRadius: 20 }}
+                            className=" w-full overflow-hidden relative min-h-400px h-90vh">
                             {story &&
                                 <Image src={story.image} blurDataURL={story.image} layout="fill" objectFit="cover" placeholder="blur" />
                             }

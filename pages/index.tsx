@@ -7,6 +7,7 @@ import React, { useEffect } from 'react'
 import Link from 'next/link'
 import Layout from 'components/Layout'
 import { Transition } from 'framer-motion'
+import Image from 'next/image'
 
 
 export default function Home() {
@@ -80,9 +81,9 @@ export default function Home() {
 
               <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                 <div className="sm:text-center lg:text-left">
-                  <h1 className="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
-                    <span className="block xl:inline text-48">Jednoduchá aplikace pro</span>{' '}
-                    <span className="block text-indigo-600 xl:inline text-48">úžasnou společnost</span>
+                  <h1 className="text-4xl tracking-tight font-bold text-gray-900 text-30  md:text-48">
+                    <span className="block xl:inline ">Jednoduchá aplikace pro</span>{' '}
+                    <span className="block text-indigo-600 xl:inline ">úžasnou společnost</span>
                   </h1>
                   <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                     Prozkoumej stories z tvého města nebo z celé republiky. Staň se součástí jednoho velkého příběhu.
@@ -90,12 +91,12 @@ export default function Home() {
                   <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                     <div className="rounded-md shadow">
                       <Link href="/dashboard">
-                      <a
+                        <a
 
-                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                      >
-                        Prozkoumat
-                      </a>
+                          className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                        >
+                          Prozkoumat
+                        </a>
                       </Link>
                     </div>
                     <div className="mt-3 sm:mt-0 sm:ml-3">
@@ -112,11 +113,17 @@ export default function Home() {
             </div>
           </div>
           <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-            <img
-              className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-              src="/img/main.jpg"
-              alt=""
-            />
+            <div className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full relative">
+              <Image
+                layout="fill"
+                blurDataURL="/img/main.jpg"
+                objectFit="cover"
+                src="/img/main.jpg"
+                alt=""
+                placeholder="blur"
+              />
+            </div>
+
           </div>
         </div>
       </div>

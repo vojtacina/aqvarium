@@ -1,19 +1,25 @@
 import prisma from "lib/clients/prisma"
+import filterText from "lib/TextFilter";
 import { getSession } from "next-auth/client";
 
 export default async function (req, res) {
     const session = await getSession({ req });
     const { bubbleId, userId, message, date } = req.body
 
+    if (filterText(message) == true) {
+        res.status(406).json({ message: "Text obsahuje slova, která porušují pravidla komunity. Pokud se to bude vícekrát opakovat, dojde k blokaci tvého účtu." })
+        return
+    }
+
     if (session) {
         await prisma.thread.create({
             data: {
                 bubble: {
-                    connect: {id: parseInt(bubbleId)}
-                } ,
+                    connect: { id: parseInt(bubbleId) }
+                },
                 messageUser: {
-                    connect: {id: userId}
-                } ,
+                    connect: { id: userId }
+                },
                 messageContent: message,
                 date: date,
             },

@@ -11,6 +11,7 @@ import { useBubbleView } from "lib/Fetchers";
 import { session, useSession } from "next-auth/client";
 import { useRouter } from 'next/router'
 import React, { useEffect } from "react";
+import Head from 'next/head'
 
 export default function Dashboard() {
 
@@ -27,12 +28,24 @@ export default function Dashboard() {
 
     return (
         <Layout title="Hlavní nástěnka">
+            <Head>
+                <meta
+                    name="theme-color" content="#F3F4F6"
+                    media="(prefers-color-scheme: light)"
+                />
+                <meta
+                    name="theme-color" content="#111827"
+                    media="(prefers-color-scheme: dark)"
+                />
+           
+
+            </Head>
             <AppContainer>
                 <Header />
 
 
-                <div className="w-full appear px-24px md:py-24px">
-                    <div className=" py-16px bg-white rounded-lg px-6px "><span>👋 Vítej zpět, </span>
+                <div className="w-full appear px-24px md:py-24px dark:text-white">
+                    <div className=" py-16px bg-white text-black dark:bg-gray-800 dark:text-white rounded-lg px-6px "><span>👋 Vítej zpět, </span>
                         <span> {session?.user?.name ? InflectionGenerator(session.user.name, 2) : <span className="w-50px h-21px load">neznámý</span>}! </span></div>
                     <div className="w-full flex justify-between py-16px items-center">
                         <div>
@@ -46,13 +59,13 @@ export default function Dashboard() {
                             <Bubble data={bubble} i={i} />
                         )}
                         {isLoading &&
-                        <>
-                        <BubblePlaceholder />
-                        <BubblePlaceholder />
-                        <BubblePlaceholder />
-                        <BubblePlaceholder />
-                        </>
-                        
+                            <>
+                                <BubblePlaceholder />
+                                <BubblePlaceholder />
+                                <BubblePlaceholder />
+                                <BubblePlaceholder />
+                            </>
+
                         }
                     </div>
                 </div>
@@ -63,3 +76,10 @@ export default function Dashboard() {
 
 
 }
+
+declare module 'react' {
+    interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+      // extends React's HTMLAttributes
+      media?: string;
+    }
+  }
