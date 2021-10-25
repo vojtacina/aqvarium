@@ -24,6 +24,28 @@ export default async function (req, res) {
                 date: date,
             },
         })
+        
+
+        // Get number of messages
+
+        const numOfMessages = await prisma.thread.count({
+            where: {
+                bubbleId: parseInt(bubbleId)
+            }
+        })
+
+       console.log(numOfMessages)
+
+        await prisma.bubble.update({
+            where: {
+                id: parseInt(bubbleId)
+            },
+            data: {
+                messages: numOfMessages,
+                updatedAt: new Date()
+            }
+        })
+
         res.statusCode = 200;
         res.end()
     }

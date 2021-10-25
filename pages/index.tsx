@@ -116,9 +116,9 @@ export default function Home() {
             <div className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full relative">
               <Image
                 layout="fill"
-                blurDataURL="/img/main.jpg"
+                blurDataURL="/img/feat_img.jpeg"
                 objectFit="cover"
-                src="/img/main.jpg"
+                src="/img/feat_img.jpeg"
                 alt=""
                 placeholder="blur"
               />

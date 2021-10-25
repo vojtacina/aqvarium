@@ -76,15 +76,15 @@ export default function Story() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden">
                         <motion.div
-                            animate={{ opacity: story ? 1 : 0, y: story ? 0 : 100, borderRadius: 0 }}
-                            initial={{ opacity: 0, y: 100, borderRadius: 20 }}
+                            animate={{ opacity: story ? 1 : 0, y: story ? 0 : 100, borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}
+                            initial={{ opacity: 0, y: 100, borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}
                             className=" w-full overflow-hidden relative min-h-400px h-90vh">
                             {story &&
                                 <Image src={story.image} blurDataURL={story.image} layout="fill" objectFit="cover" placeholder="blur" />
                             }
 
                         </motion.div>
-                        <div className="p-24px bg-white w-full md:h-90vh md:pb-0">
+                        <div className="p-24px bg-white dark:bg-gray-800 dark:text-white w-full md:h-90vh md:pb-0">
                             <div className="w-full flex flex-col pb-16px md:pb-0 h-full max-h-full">
                                 <div className="">
                                     <div className={" h-24px " + (story?.user ? "" : " load rounded-lg w-1/3 ")}>
@@ -100,9 +100,9 @@ export default function Story() {
                                 </div>
                                 <div
 
-                                    className="  w-full flex-grow self-stretch flex-shrink flex flex-col overflow-y-scroll">
+                                    className="  w-full flex-grow self-stretch flex-shrink flex flex-col overflow-y-auto">
                                     {(story?.thread.length == 0) &&
-                                        <div className="w-full bg-gray-100 rounded-lg p-16px my-8px font-medium flex items-center">
+                                        <div className="w-full bg-gray-100 dark:bg-gray-900 rounded-lg p-16px my-8px font-medium flex items-center">
                                             <div className="text-24 mr-8px">💬</div>
                                             <div>Okomentuj tento příběh jako první. </div>
 
@@ -126,7 +126,7 @@ export default function Story() {
                                             onChange={(e) =>
                                                 setComment(e.target.value)
                                             }
-                                            className="mt-1 p-16px pr-100px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg"
+                                            className="mt-1 p-16px pr-100px ring-1 focus:ring-2 ring-gray-200 dark:ring-gray-800 dark:bg-gray-900 focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg"
                                         />
                                         <motion.div
                                             whileHover={{ opacity: 0.8, scale: 1.05 }}

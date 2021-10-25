@@ -8,6 +8,15 @@ export default function Bubble({ data, i }) {
 
     const [ref, inView] = useInView();
 
+    function messages(messages) {
+        switch(messages) {
+            case 0: return "Odpověz jako první"
+            case 1: return "1 odpověď"
+            case 2: case 3: case 4: return data.messages + " odpovědi"
+            default: return data.messages + " odpovědí"
+        }
+    }
+
     return (
         <Link href={"/story/" + data.id}>
             <motion.div
@@ -28,6 +37,9 @@ export default function Bubble({ data, i }) {
                     <div>
                         {data.title}
                     </div>
+                </div>
+                <div className={"absolute top-8px right-8px p-8px  rounded-lg opacity-80 text-14 " + ((data.messages == 0) ? " bg-blue-900 " : " bg-black") }>
+                    {messages(data.messages)}
                 </div>
             </motion.div>
         </Link>

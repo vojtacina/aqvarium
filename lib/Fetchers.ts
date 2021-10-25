@@ -12,8 +12,10 @@ const fetcher = async (
 export function useBubbleView() {
   const { data, error } = useSWR('/api/bubbles/view', fetcher)
 
+  const sorted = data?.sort((a, b) => parseFloat(b.updatedAt) - parseFloat(a.updatedAt));
+
   return {
-    bubbles: data,
+    bubbles: sorted,
     isLoading: !error && !data,
     isError: error
   }
