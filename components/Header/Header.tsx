@@ -7,16 +7,20 @@ import UserButton from './UserButton'
 import { motion } from 'framer-motion'
 import router from 'next/router'
 
-export default function Header() {
+export default function Header(props) {
+
+    const {notSticky} = props
 
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
+    const [bottomPanel, setBottomPanel] = useState(true)
     const [session, loading] = useSession()
 
     const handleScroll = () => {
         const currentScrollPos = window.pageYOffset;
 
         setVisible((currentScrollPos < 20));
+        setBottomPanel((prevScrollPos > currentScrollPos) || (currentScrollPos < 50))
 
         setPrevScrollPos(currentScrollPos);
     };
@@ -37,10 +41,11 @@ export default function Header() {
 
 
     return (
+        <>
         <motion.div 
-        animate={{y: visible ? 0 : -80}}
-        transition={{ duration: 0.3, ease: "easeOut"}}
-        className={"lg:hidden w-full flex justify-start items-center overflow-hidden px-24px h-80px sticky top-0   z-50  "}>
+        animate={{y: visible ? 0 : 5, opacity: visible ? 1 : 0}}
+        transition={{ duration: 0.2, ease: "easeOut"}}
+        className={(notSticky ? " fixed " : " sticky ")+" lg:hidden flex justify-start items-center overflow-hidden px-16px h-80px top-0   z-50  "}>
             <Link href="/dashboard">
                 <a>
                     <div className="w-40px  h-40px relative appear">
@@ -49,7 +54,12 @@ export default function Header() {
                     </div>
                 </a>
             </Link>
-            <div className="ml-28px w-full flex flex-grow flex-shrink justify-around items-center text-14 md:text-16">
+        </motion.div>
+        <motion.div 
+        animate={{y: bottomPanel ? 0 : 80}}
+        transition={{ duration: 0.3, ease: "easeOut"}}
+        className={"lg:hidden w-full flex bg-gray-900 backdrop bg-opacity-50 justify-start items-center overflow-hidden px-16px h-50px fixed bottom-0   z-50  "}>
+            <div className=" w-full flex flex-grow flex-shrink justify-around items-center text-14 md:text-16">
             <Link href="/dashboard">
                 <div className="flex items-center opacity-50 hover:opacity-100 dark:text-white dark:hover:text-white hover:text-purple cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-16px w-16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -71,12 +81,14 @@ export default function Header() {
                     </svg>
                     <div className="ml-8px"></div>
                 </div>
+                <Link href="/my-profile">
                 <div className="flex items-center opacity-50 hover:opacity-100 dark:text-white dark:hover:text-white hover:text-purple cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-16px h-16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                     <div className="ml-8px"></div>
                 </div>
+                </Link>
                 <div
                 onClick={() => logout()}
                 className="flex items-center opacity-50 hover:opacity-100 dark:text-white dark:hover:text-white hover:text-purple cursor-pointer">
@@ -87,5 +99,6 @@ export default function Header() {
                 </div>
             </div>
         </motion.div>
+        </>
     )
 }

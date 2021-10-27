@@ -5,12 +5,17 @@ export default async function (req, res) {
     const session = await getSession({ req });
     
     if (session) {
+        console.log(req.body)
         const updateUser = await prisma.user.update({
             where: {
                 email: session.user.email,
             },
             data: {
                 name: req.body.name,
+                username: req.body.username,
+                image: req.body.image,
+                description: req.body.description,
+                password: req.body.password
             },
         })
         res.json(updateUser)

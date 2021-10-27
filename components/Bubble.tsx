@@ -38,7 +38,7 @@ export default function Bubble({ data, i }) {
                         {data.title}
                     </div>
                 </div>
-                <div className={"absolute top-8px right-8px p-8px  rounded-lg opacity-80 text-14 " + ((data.messages == 0) ? " bg-blue-900 " : " bg-black") }>
+                <div className={"absolute top-6px right-6px p-8px text-white rounded-lg opacity-80 text-12 " + ((data.messages == 0) ? " bg-blue-900 " : " bg-black") }>
                     {messages(data.messages)}
                 </div>
             </motion.div>

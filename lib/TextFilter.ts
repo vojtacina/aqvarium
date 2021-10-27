@@ -16,7 +16,7 @@ export default function filterText(text) {
         'redtube',
         'xhamster',
         'milf',
-        'prc',
+        'prcat',
         'šoust',
         'debil',
         'čubk',

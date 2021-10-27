@@ -2,22 +2,35 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { signIn, signOut, useSession, providers } from 'next-auth/client'
 import router from 'next/router'
+import Head from 'next/head'
 
-export default function AppContainer({ children }) {
+export default function AppContainer(props) {
+
+    const {children} = props
 
     async function logout() {
-        const response = await signOut({redirect: false})
-        if(response) {
+        const response = await signOut({ redirect: false })
+        if (response) {
             router.push("/")
         }
     }
 
     return (
         <div className="w-full flex justify-between  relative">
+            <Head>
+                <meta
+                    name="theme-color" content="#F3F4F6"
+                    media="(prefers-color-scheme: light)"
+                />
+                <meta
+                    name="theme-color" content="#111827"
+                    media="(prefers-color-scheme: dark)"
+                />
+            </Head>
             <div className="hidden lg:block p-24px lg:w-200px ">
 
             </div>
-            <div className="max-w-6xl w-full lg:pl-50px lg:pt-8px">
+            <div className="max-w-6xl w-full lg:pl-50px lg:pt-8px pb-50px md:pb-0">
                 {children}
             </div>
             <div></div>
@@ -37,14 +50,14 @@ export default function AppContainer({ children }) {
                 </div>
                 <div className="w-full h-1px bg-gray-300 dark:bg-gray-700 bg-opacity-50"></div>
                 <Link href="/dashboard">
-                <div className="flex items-center opacity-100 font-medium hover:opacity-100 text-gray-500 dark:text-gray-300  hover:text-purple dark:hover:text-white cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-16px w-16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                    <div className="ml-8px">Domů</div>
-                </div>
+                    <div className="flex items-center opacity-100 font-medium hover:opacity-100 text-gray-500 dark:text-gray-300  hover:text-purple dark:hover:text-white cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-16px w-16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        <div className="ml-8px">Domů</div>
+                    </div>
                 </Link>
-                
+
                 <div className="w-full h-1px bg-gray-300 dark:bg-gray-700 bg-opacity-50"></div>
                 <div className="flex items-center font-medium   text-gray-500 dark:text-gray-300 hover:text-purple dark:hover:text-white cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-16px w-16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,16 +72,18 @@ export default function AppContainer({ children }) {
                     <div className="ml-8px">Moje příběhy</div>
                 </div>
                 <div className="w-full h-1px font-medium bg-gray-300 dark:bg-gray-700 bg-opacity-50"></div>
+                <Link href="/my-profile">
                 <div className="flex items-center   text-gray-500 dark:text-gray-300 hover:text-purple dark:hover:text-white cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-16px h-16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                     <div className="ml-8px">Můj účet</div>
                 </div>
+                </Link>
                 <div className="w-full h-1px bg-gray-300 dark:bg-gray-700 bg-opacity-50"></div>
                 <div
-                onClick={() => logout()}
-                className="flex items-center font-medium   text-gray-500 dark:text-gray-300 hover:text-purple dark:hover:text-white cursor-pointer">
+                    onClick={() => logout()}
+                    className="flex items-center font-medium   text-gray-500 dark:text-gray-300 hover:text-purple dark:hover:text-white cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-16px h-16px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>

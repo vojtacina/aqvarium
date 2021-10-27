@@ -13,6 +13,7 @@ import Message from "components/Message"
 import AutosizeInput from 'react-input-autosize';
 import { useKeyPress } from 'lib/useKeyPress'
 import filterText from "lib/TextFilter"
+import Return from "components/Icons/Return"
 
 
 export default function Story() {
@@ -69,15 +70,15 @@ export default function Story() {
 
 
     return (
-        <Layout title={story ? story?.title : ("Příběh " + id)}>
-            <AppContainer>
-                <Header />
+        <Layout title={story ? story?.title : ("Příběh " + id)} >
+            <AppContainer >
+                <Header notSticky/>
                 <div className="w-full appear md:px-24px md:py-24px">
 
                     <div className="grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden">
                         <motion.div
-                            animate={{ opacity: story ? 1 : 0, y: story ? 0 : 100, borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}
-                            initial={{ opacity: 0, y: 100, borderTopLeftRadius: 20, borderBottomLeftRadius: 20 }}
+                            animate={{ opacity: story ? 1 : 0, y: story ? 0 : 100, borderTopLeftRadius: 20}}
+                            initial={{ opacity: 0, y: 100, borderTopLeftRadius: 20}}
                             className=" w-full overflow-hidden relative min-h-400px h-90vh">
                             {story &&
                                 <Image src={story.image} blurDataURL={story.image} layout="fill" objectFit="cover" placeholder="blur" />
@@ -134,7 +135,7 @@ export default function Story() {
                                             initial={false}
                                             onClick={() => addComment()}
                                             className="absolute right-0 top-1px bottom-0 px-16px flex items-center cursor-pointer">
-                                            <Image src="/icons/return-svgrepo-com.svg" width={24} height={24} />
+                                            <Return />
                                             <span className="ml-4px uppercase text-12">Odeslat</span>
                                         </motion.div>
                                     </div>

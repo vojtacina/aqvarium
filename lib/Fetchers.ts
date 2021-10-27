@@ -38,6 +38,10 @@ export function useUserDetails() {
   return {
     userId: data?.id,
     username: data?.username,
+    name: data?.name,
+    description: data?.description,
+    password: data?.password,
+    image: data?.image,
     isLoading: !error && !data,
     isError: error
   }

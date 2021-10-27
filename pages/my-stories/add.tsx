@@ -83,7 +83,7 @@ export default function Dashboard() {
                 <Header />
 
 
-                <div className="w-full appear px-24px">
+                <div className="w-full appear px-16px">
                     <div className="w-full flex justify-between py-24px items-center">
                         <div>
                             <h1 className="font-medium dark:text-white text-18 md:text-24">Přidat příběh</h1>
