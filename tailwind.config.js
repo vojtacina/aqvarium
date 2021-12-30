@@ -63,6 +63,8 @@ module.exports = {
                 white: "#FFFFFF",
                 dark: '#383838',
                 purple: '#6000FD',
+                bglight: '#F5F3FB',
+                bgdark: '#000000',
                 transparent: 'rgba(0, 0, 0, 0)'
             },
             rotate: {
@@ -115,9 +117,6 @@ module.exports = {
                 'encode': ['Encode', 'sans-serif', 'Arial'],
             },
             spacing: {
-                '14': '3.5rem',
-                '13': '3.25rem',
-                '19': '4.5rem',
                 '1px': '1px',
                 '2px': '2px',
                 '3px': '3px',

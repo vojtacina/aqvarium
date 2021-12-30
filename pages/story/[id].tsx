@@ -14,6 +14,7 @@ import AutosizeInput from 'react-input-autosize';
 import { useKeyPress } from 'lib/useKeyPress'
 import filterText from "lib/TextFilter"
 import Return from "components/Icons/Return"
+import Loading from "components/Loading"
 
 
 export default function Story() {
@@ -72,20 +73,20 @@ export default function Story() {
     return (
         <Layout title={story ? story?.title : ("Příběh " + id)} >
             <AppContainer >
-                <Header notSticky/>
+                <Header notSticky />
                 <div className="w-full appear md:px-24px md:py-24px">
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden">
+                    <div className="grid grid-cols-1 md:grid-cols-2 rounded-lg shadow overflow-hidden">
                         <motion.div
-                            animate={{ opacity: story ? 1 : 0, y: story ? 0 : 100, borderTopLeftRadius: 20}}
-                            initial={{ opacity: 0, y: 100, borderTopLeftRadius: 20}}
+                            animate={{ opacity: story ? 1 : 0, y: story ? 0 : 100, borderTopLeftRadius: 20 }}
+                            initial={{ opacity: 0, y: 100, borderTopLeftRadius: 20 }}
                             className=" w-full overflow-hidden relative min-h-400px h-90vh">
                             {story &&
                                 <Image src={story.image} blurDataURL={story.image} layout="fill" objectFit="cover" placeholder="blur" />
                             }
 
                         </motion.div>
-                        <div className="p-24px bg-white dark:bg-gray-800 dark:text-white w-full md:h-90vh md:pb-0">
+                        <div className="p-24px bg-white dark:bg-gray-900 dark:text-white w-full md:h-90vh md:pb-0">
                             <div className="w-full flex flex-col pb-16px md:pb-0 h-full max-h-full">
                                 <div className="">
                                     <div className={" h-24px " + (story?.user ? "" : " load rounded-lg w-1/3 ")}>
@@ -117,27 +118,41 @@ export default function Story() {
 
                                     }
                                     <div className="p-3px justify-self-end relative md:mb-24px">
-                                        <input
-                                            ref={input}
-                                            id="input"
-                                            type="text"
-                                            placeholder={clicked ? "Přidávání komentáře ..." : "Okomentuj..."}
-                                            required
-                                            value={comment}
-                                            onChange={(e) =>
-                                                setComment(e.target.value)
-                                            }
-                                            className="mt-1 p-16px pr-100px ring-1 focus:ring-2 ring-gray-200 dark:ring-gray-800 dark:bg-gray-900 focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-lg"
-                                        />
-                                        <motion.div
-                                            whileHover={{ opacity: 0.8, scale: 1.05 }}
-                                            animate={{ opacity: 0.5, scale: 1 }}
-                                            initial={false}
-                                            onClick={() => addComment()}
-                                            className="absolute right-0 top-1px bottom-0 px-16px flex items-center cursor-pointer">
-                                            <Return />
-                                            <span className="ml-4px uppercase text-12">Odeslat</span>
-                                        </motion.div>
+                                        {clicked ?
+<>
+
+                                            <motion.div 
+                                            animate={{opacity: [1, 0, 1]}}
+                                            transition={{repeat: Infinity}}
+                                            className="w-full rounded-xl bg-gray-100 dark:bg-black mt-1 h-60px">
+                                            </motion.div>
+                                            </>
+                                            :
+                                            <>
+                                                <input
+                                                    ref={input}
+                                                    id="input"
+                                                    type="text"
+                                                    placeholder={clicked ? "Přidávání komentáře ..." : "Okomentuj..."}
+                                                    required
+                                                    value={comment}
+                                                    onChange={(e) =>
+                                                        setComment(e.target.value)
+                                                    }
+                                                    className="mt-1 p-16px pr-100px ring-1 focus:ring-2 ring-gray-200 dark:ring-gray-800 dark:bg-black focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-xl"
+                                                />
+                                                <motion.div
+                                                    whileHover={{ opacity: 0.8, scale: 1.05 }}
+                                                    animate={{ opacity: 0.5, scale: 1 }}
+                                                    initial={false}
+                                                    onClick={() => addComment()}
+                                                    className="absolute right-0 top-1px bottom-0 px-16px flex items-center cursor-pointer">
+                                                    <Return />
+                                                    <span className="ml-4px uppercase text-12">Odeslat</span>
+                                                </motion.div>
+                                            </>
+                                        }
+
                                     </div>
                                 </div>
                             </div>

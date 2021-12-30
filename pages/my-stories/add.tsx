@@ -98,7 +98,7 @@ export default function Dashboard() {
                             {clicked ? "Ověřování..." : "Nahrát"}
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow-lg overflow-hidden mb-24px">
+                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow overflow-hidden mb-24px">
 
 
                         <div className="p-24px order-1 md:order-2 md:col-span-2">

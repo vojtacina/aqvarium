@@ -13,7 +13,7 @@ export default function BubblePlaceholder({}) {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: (inView ? 1 : 0), scale: (inView ? 1 : 0.9) }}
             transition={{ duration: 0.2 }}
-            className="w-full h-250px md:h-300px load rounded-lg p-12px flex items-end relative overflow-hidden cursor-pointer">
+            className="w-full h-250px md:h-300px load rounded-xl p-12px flex items-end relative overflow-hidden cursor-pointer">
         </motion.div>
     )
 }

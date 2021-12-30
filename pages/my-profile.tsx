@@ -49,7 +49,7 @@ export default function Dashboard() {
 
 
                 <div className="w-full appear px-16px">
-                    <div className="w-full flex justify-between py-24px items-center">
+                    <div className="w-full flex justify-between pb-24px items-center">
                         <div>
                             <h1 className="font-medium dark:text-white text-18 md:text-24">Můj účet</h1>
                         </div>
@@ -63,7 +63,7 @@ export default function Dashboard() {
                             {clicked ? "Ukládání..." : "Uložit"}
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow-lg overflow-hidden mb-24px">
+                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white dark:bg-gray-900 dark:text-white shadow-lg overflow-hidden mb-24px">
 
                         <div className="flex items-center justify-center w-full h-full p-24px">
                             <div className="w-200px h-200px rounded-full overflow-hidden relative">

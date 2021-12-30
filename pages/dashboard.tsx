@@ -39,15 +39,15 @@ export default function Dashboard() {
 
 
                 <div className="w-full appear px-16px md:py-24px dark:text-white">
-                    <div className=" py-16px bg-white text-black dark:bg-gray-800 dark:text-white rounded-lg px-6px "><span>👋 Ahoj, </span>
-                        <span> {name ? InflectionGenerator(name, 2) : <span className="w-50px h-21px load">neznámý</span>}! </span></div>
-                    <div className="w-full flex justify-between py-16px items-center">
+                    {/* <div className=" py-16px bg-white border border-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-lg px-6px "><span>👋 Ahoj, </span>
+                        <span> {name ? InflectionGenerator(name, 2) : <span className="w-50px h-21px load">neznámý</span>}! </span></div> */}
+                    <div className="w-full flex justify-between pb-16px items-center">
                         <div>
                             <h1 className="font-medium text-18 md:text-24 whitespace-nowrap">Nejnovější příběhy</h1>
                         </div>
 
                     </div>
-                    <div className="grid sm:grid-cols-3 gap-x-12px gap-y-12px grid-cols-2 md:grid-cols-4 xl:grid-cols-5 pb-30px">
+                    <div className="grid sm:grid-cols-3 gap-8px lg:gap-12px grid-cols-2 md:grid-cols-4 xl:grid-cols-5 pb-30px">
                         <AddBubble />
                         {bubbles?.map((bubble, i) =>
                             <Bubble data={bubble} i={i} />
