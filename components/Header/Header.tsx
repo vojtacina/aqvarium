@@ -6,6 +6,7 @@ import Link from 'next/link'
 import UserButton from './UserButton'
 import { AnimatePresence, motion } from 'framer-motion'
 import router from 'next/router'
+import { CaretDown, DotsNine } from 'phosphor-react'
 
 export default function Header(props) {
 
@@ -77,7 +78,7 @@ export default function Header(props) {
                             </a>
                         </Link>
                         <select onChange={(el) => switcher(el)} value={page}
-                            className="bg-transparent relative w-full text-transparent bg-opacity-50 rounded-xl h-40px px-16px cursor-pointer appearance-none border-gray-600 text-white text-24 font-medium block outline-none"
+                            className="bg-transparent relative w-full bg-opacity-50 rounded-xl h-40px px-16px cursor-pointer appearance-none border-gray-600 text-white text-24 font-medium block outline-none"
                         >
                             <option value="/dashboard">Příběhy</option>
                             <option value="/messages">Zprávy</option>
@@ -85,13 +86,13 @@ export default function Header(props) {
                             <option value="/my-profile">Můj účet</option>
                             <option value="/logout">Odhlásit se</option>
                         </select>
-
+                        <div className="text-white absolute right-4 top-6 pointer-events-none">
+                            <CaretDown size={32} />
+                        </div>
                     </motion.div>
                 }
-                {!notSticky &&
-                  <div className="h-80px"></div>
-                }
             </AnimatePresence>
+            <div className="h-80px"></div>
         </>
     )
 }
