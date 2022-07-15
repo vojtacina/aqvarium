@@ -86,10 +86,10 @@ export default function Story() {
                             }
 
                         </motion.div>
-                        <div className="p-24px bg-white dark:bg-gray-900 dark:text-white w-full md:h-90vh md:pb-0">
+                        <div className="p-24px bg-white bg-opacity-10 text-white w-full md:h-90vh md:pb-0">
                             <div className="w-full flex flex-col pb-16px md:pb-0 h-full max-h-full">
                                 <div className="">
-                                    <div className={" h-24px " + (story?.user ? "" : " load rounded-lg w-1/3 ")}>
+                                <div className={"  px-2 inline-flex bg-purple bg-opacity-20 rounded-lg " + (story?.user ? "" : " load h-24px rounded-lg w-1/3 ")}>
                                         <motion.p
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
@@ -98,13 +98,14 @@ export default function Story() {
                                     <div className={" pb-16px " + (story ? "w-full" : " load  h-24px rounded-lg w-1/2 mt-16px ")}>
                                         <h1 className="font-medium text-18 md:text-24">{story?.title}</h1>
                                     </div>
+                                 
 
                                 </div>
                                 <div
 
                                     className="  w-full flex-grow self-stretch flex-shrink flex flex-col overflow-y-auto">
                                     {(story?.thread.length == 0) &&
-                                        <div className="w-full bg-gray-100 dark:bg-gray-900 rounded-lg p-16px my-8px font-medium flex items-center">
+                                        <div className="w-full bg-black bg-opacity-25 rounded-lg p-16px my-8px font-medium flex items-center">
                                             <div className="text-24 mr-8px">💬</div>
                                             <div>Okomentuj tento příběh jako první. </div>
 
@@ -124,7 +125,7 @@ export default function Story() {
                                             <motion.div 
                                             animate={{opacity: [1, 0, 1]}}
                                             transition={{repeat: Infinity}}
-                                            className="w-full rounded-xl bg-gray-100 dark:bg-black mt-1 h-60px">
+                                            className="w-full rounded-xl bg-white bg-opacity-10 mt-1 h-60px">
                                             </motion.div>
                                             </>
                                             :
@@ -139,7 +140,7 @@ export default function Story() {
                                                     onChange={(e) =>
                                                         setComment(e.target.value)
                                                     }
-                                                    className="mt-1 p-16px pr-100px ring-1 focus:ring-2 ring-gray-200 dark:ring-gray-800 dark:bg-black focus:ring-purple bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-xl"
+                                                    className="mt-1 p-16px pr-100px ring-1 focus:ring-2 ring-gray-800 bg-black focus:ring-purple  focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-xl"
                                                 />
                                                 <motion.div
                                                     whileHover={{ opacity: 0.8, scale: 1.05 }}

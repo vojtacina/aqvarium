@@ -29,16 +29,11 @@ export default function Dashboard() {
 
     return (
         <Layout title="Hlavní nástěnka">
-            <Head>
-                
-           
-
-            </Head>
             <AppContainer>
                 <Header />
 
 
-                <div className="w-full appear px-16px md:py-24px dark:text-white">
+                <div className="w-full appear px-16px md:py-24px text-white">
                     {/* <div className=" py-16px bg-white border border-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-lg px-6px "><span>👋 Ahoj, </span>
                         <span> {name ? InflectionGenerator(name, 2) : <span className="w-50px h-21px load">neznámý</span>}! </span></div> */}
                     <div className="w-full flex justify-between pb-16px items-center">

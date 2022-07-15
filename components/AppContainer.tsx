@@ -9,7 +9,7 @@ export default function AppContainer(props) {
 
     const { children } = props
 
-    const [active, setActive] = useState("🏠 Domů");
+    const [active, setActive] = useState("Domů");
 
     async function logout() {
         const response = await signOut({ redirect: false })
@@ -45,7 +45,7 @@ export default function AppContainer(props) {
                 {children}
             </div>
             <div></div>
-            <div className="hidden dark:text-white lg:flex fixed bottom-0 top-0 left-0 p-24px   lg:w-200px 2xl:w-250px dark:bg-bgdark bg-bglight flex-col gap-y-8px">
+            <div className="hidden text-white  lg:flex fixed bottom-0 top-0 left-0 p-24px   lg:w-200px 2xl:w-250px bg-white bg-opacity-5 flex-col gap-y-8px">
                 <div className="mb-50px">
                     <Link href="/dashboard">
                         <a>
@@ -57,15 +57,15 @@ export default function AppContainer(props) {
                     </Link>
                 </div>
 
-                <MenuItem title="💥 Příběhy" href="/dashboard" active={active} setActive={(to) => setActive(to)} />
-                <MenuItem title="💬 Zprávy" href="/" active={active} setActive={(to) => setActive(to)} />
-                <MenuItem title="🎞 Moje příběhy" href="/" active={active} setActive={(to) => setActive(to)} />
-                <MenuItem title="🙋‍♂️ Můj účet" href="/my-profile" active={active} setActive={(to) => setActive(to)} />
+                <MenuItem title="Příběhy" href="/dashboard" active={active} setActive={(to) => setActive(to)} />
+                <MenuItem title="Zprávy" href="/" active={active} setActive={(to) => setActive(to)} />
+                <MenuItem title="Moje příběhy" href="/" active={active} setActive={(to) => setActive(to)} />
+                <MenuItem title="Můj účet" href="/my-profile" active={active} setActive={(to) => setActive(to)} />
                 <div
                     onClick={() => logout()}
-                    className="flex items-center opacity-100 font-medium hover:opacity-100 hover:bg-white p-2 rounded-md dark:hover:bg-black text-gray-500 dark:text-gray-300  hover:text-black dark:hover:text-white cursor-pointer">
+                    className="flex items-center opacity-100 font-light hover:opacity-100 hover:bg-purple hover:bg-opacity-10 p-2 rounded-md  text-gray-300 cursor-pointer">
 
-                    <div className="">🔚 Odhlásit se</div>
+                    <div className="">Odhlásit se</div>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@ function MenuItem({ title, href, active, setActive }) {
 
     return (
         <Link href={href} >
-            <div className={(active == href ? " bg-white dark:bg-black text-black shadow " : " text-gray-500 dark:text-gray-300 ") + " flex items-center opacity-100 font-medium hover:opacity-100 hover:bg-white hover:bg-opacity-50 p-2 rounded-md dark:hover:bg-black   hover:text-black dark:hover:text-white cursor-pointer"}>
+            <div className={(active == href ? "  text-purple bg-purple bg-opacity-20 font-medium " : " text-gray-300 ") + " flex items-center opacity-100 font-light  hover:bg-purple hover:bg-opacity-10 p-2 rounded-md cursor-pointer"}>
                 <div className="">{title}</div>
             </div>
         </Link>

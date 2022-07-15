@@ -86,11 +86,11 @@ export default function Dashboard() {
                 <div className="w-full appear px-16px">
                     <div className="w-full flex justify-between py-24px items-center">
                         <div>
-                            <h1 className="font-medium dark:text-white text-18 md:text-24">Přidat příběh</h1>
+                            <h1 className="font-medium text-white text-18 md:text-24">Přidat příběh</h1>
                         </div>
                         <button
                             onClick={() => send()}
-                            className={"group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " + (clicked ? " bg-gray-200 text-gray-800 " : " bg-indigo-600 hover:bg-indigo-700")}
+                            className={"group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " + (clicked ? " bg-indigo-600 bg-opacity-20 text-purple " : " bg-indigo-600 hover:bg-indigo-700")}
                         >
                             <span className="absolute left-0 inset-y-0 flex items-center pl-3">
 
@@ -98,7 +98,7 @@ export default function Dashboard() {
                             {clicked ? "Ověřování..." : "Nahrát"}
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white dark:bg-gray-800 dark:text-white shadow overflow-hidden mb-24px">
+                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white bg-opacity-10 text-white shadow overflow-hidden mb-24px">
 
 
                         <div className="p-24px order-1 md:order-2 md:col-span-2">
@@ -113,10 +113,10 @@ export default function Dashboard() {
                                     id="first-name"
                                     autoComplete="given-name"
                                     required
-                                    onChange={(e) => 
-                                            setFile(e.target.files[0])
-}
-                                    className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple bg-white dark:bg-black dark:ring-gray-900 focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                    onChange={(e) =>
+                                        setFile(e.target.files[0])
+                                    }
+                                    className="mt-1 p-8px ring-1 focus:ring-2 focus:ring-purple bg-black ring-gray-900 focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 />
                             </div>
                             <div className="my-8px">
@@ -130,7 +130,7 @@ export default function Dashboard() {
                                     autoComplete="given-name"
                                     required
                                     onChange={(e) => setTitle(e.target.value)}
-                                    className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple focus:outline-none dark:bg-black dark:ring-gray-900 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                    className="mt-1 p-8px ring-1 focus:ring-2 focus:ring-purple bg-black ring-gray-900 focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 />
                             </div>
                             <div className="my-8px">
@@ -143,15 +143,15 @@ export default function Dashboard() {
                                     id="first-name"
                                     autoComplete="given-name"
                                     onChange={(e) => setCity(e.target.value)}
-                                    className="mt-1 p-8px ring-1 focus:ring-2 ring-gray-200 focus:ring-purple dark:bg-black dark:ring-gray-900 bg-white focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                    className="mt-1 p-8px ring-1 focus:ring-2 focus:ring-purple bg-black ring-gray-900 focus:outline-none focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 />
 
                             </div>
                         </div>
                         <div className="order-2 md:order-1 relative h-full w-full">
                             {file &&
-                            <div className="w-full h-full">
-                                <img src={URL.createObjectURL(file)} width={"100%"} height="100%" className="object-cover min-h-full" />
+                                <div className="w-full h-full">
+                                    <img src={URL.createObjectURL(file)} width={"100%"} height="100%" className="object-cover min-h-full" />
                                 </div>
                             }
                             <div className="absolute p-24px text-white left-0 right-0 bottom-0 text-24 block">

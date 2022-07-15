@@ -49,13 +49,13 @@ export default function Dashboard() {
 
 
                 <div className="w-full appear px-16px">
-                    <div className="w-full flex justify-between pb-24px items-center">
+                    <div className="w-full flex justify-between py-24px items-center">
                         <div>
-                            <h1 className="font-medium dark:text-white text-18 md:text-24">Můj účet</h1>
+                            <h1 className="font-medium text-white text-18 md:text-24">Můj účet</h1>
                         </div>
                         <button
                             onClick={() => save()}
-                            className={"group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " + (clicked ? " bg-gray-200 text-gray-800 " : " bg-indigo-600 hover:bg-indigo-700")}
+                            className={"group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 " + (clicked ? " bg-indigo-600 bg-opacity-20 text-purple " : " bg-indigo-600 hover:bg-indigo-700")}
                         >
                             <span className="absolute left-0 inset-y-0 flex items-center pl-3">
 
@@ -63,7 +63,7 @@ export default function Dashboard() {
                             {clicked ? "Ukládání..." : "Uložit"}
                         </button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white dark:bg-gray-900 dark:text-white shadow-lg overflow-hidden mb-24px">
+                    <div className="grid grid-cols-1 md:grid-cols-3 w-full rounded-lg bg-white bg-opacity-10 text-white shadow-lg overflow-hidden mb-24px">
 
                         <div className="flex items-center justify-center w-full h-full p-24px">
                             <div className="w-200px h-200px rounded-full overflow-hidden relative">

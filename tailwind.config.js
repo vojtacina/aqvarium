@@ -1,5 +1,5 @@
 module.exports = {
-    darkMode: 'media', 
+    darkMode: 'media',
 
     purge: [
         "./components/**/*.tsx",
@@ -63,6 +63,9 @@ module.exports = {
                 white: "#FFFFFF",
                 dark: '#383838',
                 purple: '#6000FD',
+                pruple: {
+                    high: '#8766ff'
+                },
                 bglight: '#F5F3FB',
                 bgdark: '#000000',
                 transparent: 'rgba(0, 0, 0, 0)'
