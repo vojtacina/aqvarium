@@ -67,7 +67,7 @@ export default function Header(props) {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 5, opacity: 0 }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className={(notSticky ? " fixed " : " sticky ") + " lg:hidden w-full flex justify-between items-center overflow-hidden px-16px h-80px top-0   z-50  "}>
+                        className={"fixed lg:hidden w-full flex justify-between items-center overflow-hidden px-16px h-80px top-0   z-50  "}>
                         <Link href="/dashboard">
                             <a>
                                 <div className="w-40px  h-40px relative appear">
@@ -88,7 +88,9 @@ export default function Header(props) {
 
                     </motion.div>
                 }
-
+                {!notSticky &&
+                  <div className="h-80px"></div>
+                }
             </AnimatePresence>
         </>
     )

@@ -6,7 +6,7 @@ export default function Message({user, message}) {
 
     return (
        <div className="flex items-start my-4px">
-           <div className="w-32px h-32px rounded-full overflow-hidden relative flex-shrink-0">
+           <div className="w-32px h-32px rounded-full overflow-hidden relative flex-shrink-0 mr-3">
                {user.image ?
                <img src={user.image} width="100%" height="100%" className="object-cover" />
                : 
@@ -14,8 +14,7 @@ export default function Message({user, message}) {
                }
                
            </div>
-           <div className="mx-8px text-12 pt-3px">{user.username}:</div>
-           <div>{message}</div>
+           <div className='mt-1'>{message}</div>
        </div> 
     )
 }

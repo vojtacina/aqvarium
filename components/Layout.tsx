@@ -19,9 +19,11 @@ export default function Layout({ children, title }: { children: any, title?: str
                     content="Najdi si nové přátele z tvého města i celé ČR!"
                 />
             </Head>
-            <main className="bg-bgdark min-h-screen ">
+            <main className="bg-bgdark min-h-screen">
                 {children}
+                <div id="modal" style={{zIndex: 100}} ></div>
             </main>
+            
         </div>
     )
 }

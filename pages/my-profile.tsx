@@ -67,7 +67,7 @@ export default function Dashboard() {
 
                         <div className="flex items-center justify-center w-full h-full p-24px">
                             <div className="w-200px h-200px rounded-full overflow-hidden relative">
-                                <Image src={formData.image ?? "/img/background.jpg"} layout="fill" objectFit="cover" />
+                                <img src={formData.image ?? "/img/background.jpg"}  />
                             </div>
                             
                         </div>

@@ -4,6 +4,7 @@ import { signIn, signOut, useSession, providers } from 'next-auth/client'
 import router from 'next/router'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
+import { Cardholder, ChatsTeardrop, Lightning, Person, SignOut, StackSimple, User } from 'phosphor-react'
 
 export default function AppContainer(props) {
 
@@ -57,28 +58,28 @@ export default function AppContainer(props) {
                     </Link>
                 </div>
 
-                <MenuItem title="Příběhy" href="/dashboard" active={active} setActive={(to) => setActive(to)} />
-                <MenuItem title="Zprávy" href="/" active={active} setActive={(to) => setActive(to)} />
-                <MenuItem title="Moje příběhy" href="/" active={active} setActive={(to) => setActive(to)} />
-                <MenuItem title="Můj účet" href="/my-profile" active={active} setActive={(to) => setActive(to)} />
-                <div
-                    onClick={() => logout()}
-                    className="flex items-center opacity-100 font-light hover:opacity-100 hover:bg-purple hover:bg-opacity-10 p-2 rounded-md  text-gray-300 cursor-pointer">
-
-                    <div className="">Odhlásit se</div>
+                <MenuItem icon={<Lightning />} title="Příběhy" href="/dashboard" active={active} setActive={(to) => setActive(to)} />
+                <MenuItem icon={<ChatsTeardrop />} title="Zprávy" href="/" active={active} setActive={(to) => setActive(to)} />
+                <MenuItem icon={<StackSimple />} title="Moje příběhy" href="/" active={active} setActive={(to) => setActive(to)} />
+                <MenuItem icon={<User />} title="Můj účet" href="/my-profile" active={active} setActive={(to) => setActive(to)} />
+                <div className=""   onClick={() => logout()}>
+                <MenuItem icon={<SignOut />} title="Odhlásit se" href="/" active={active} setActive={(to) => setActive(to)} />
                 </div>
             </div>
         </div>
     )
 }
 
-function MenuItem({ title, href, active, setActive }) {
+function MenuItem({ title, href, active, setActive, icon }) {
 
 
     return (
         <Link href={href} >
             <div className={(active == href ? "  text-purple bg-purple bg-opacity-20 font-medium " : " text-gray-300 ") + " flex items-center opacity-100 font-light  hover:bg-purple hover:bg-opacity-10 p-2 rounded-md cursor-pointer"}>
-                <div className="">{title}</div>
+                <div className="flex items-center gap-x-2">
+                    {icon}
+                    {title}
+                </div>
             </div>
         </Link>
     )
