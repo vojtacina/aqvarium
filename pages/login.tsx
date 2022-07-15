@@ -1,15 +1,10 @@
-import Header from '../components/Header/Header'
-import MainPage from '../components/MainPage'
-import Loading from '../components/Loading'
-import { signIn, signOut, useSession, providers } from 'next-auth/client'
+import { signIn, useSession } from 'next-auth/client'
 import { getCsrfToken } from 'next-auth/client'
 import { useRouter } from 'next/router'
 
 
-import Head from "next/head";
 import React, { useEffect, useState } from 'react'
 import Layout from 'components/Layout'
-import { redirect } from 'next/dist/next-server/server/api-utils'
 
 
 

@@ -18,7 +18,7 @@
         "framer-motion": "^4.1.17",
         "headlessui": "0.0.0",
         "heroicons": "^1.0.4",
-        "next": "^11.0.1",
+        "next": "^11.1.4",
         "next-auth": "^3.29",
         "next-iron-session": "^4.1.12",
         "next-s3-upload": "^0.1.7",
